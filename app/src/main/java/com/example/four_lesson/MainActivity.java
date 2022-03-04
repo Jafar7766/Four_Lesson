@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.four_lesson.model.User;
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,13 +22,14 @@ public class MainActivity extends AppCompatActivity {
         b_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDetailActivity();
+                User user = new User(20, "Jafar");
+                openDetailActivity(user);
             }
         });
     }
-    void openDetailActivity(){
+    void openDetailActivity(User user){
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("name", "Jafar Bakhromov");
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 }
